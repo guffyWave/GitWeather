@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/issuesListFragment">
+
+    <fragment
+        android:id="@+id/issuesListFragment"
+        android:name="com.thepeoplemesh.gitissues.ui.issues.list.IssuesListFragment"
+        android:label="isssues_list_fragment"
+        tools:layout="@layout/isssues_list_fragment" />
+    <fragment
+        android:id="@+id/issueDetailFragment"
+        android:name="com.thepeoplemesh.gitissues.ui.issues.detail.IssueDetailFragment"
+        android:label="issue_detail_fragment"
+        tools:layout="@layout/issue_detail_fragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.thepeoplemesh.gitissues.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/weatherlistFragment"
+        android:name="com.thepeoplemesh.gitissues.ui.weather.WeatherListFragment"
+        android:label="weather_list_fragment"
+        tools:layout="@layout/weather_list_fragment" />
+</navigation>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/issuesListFragment"
+        android:icon="@drawable/baseline_article_black"
+        android:title="Issues"/>
+
+    <item
+        android:id="@+id/weatherlistFragment"
+        android:icon="@drawable/baseline_wb_cloudy_black"
+        android:title="Weather"/>
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/baseline_settings_black"
+        android:title="Settings"/>
+</menu>
