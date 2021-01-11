@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.thepeoplemesh.gitissues.R
-import com.thepeoplemesh.gitissues.data.WeatherService
+import com.thepeoplemesh.gitissues.common.communication.ConnectivityInterceptorImpl
+import com.thepeoplemesh.gitissues.common.communication.WeatherDataSourceImpl
+import com.thepeoplemesh.gitissues.common.communication.WeatherService
 import kotlinx.android.synthetic.main.weather_list_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -33,11 +36,18 @@ class WeatherListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(WeatherListViewModel::class.java)
         // TODO: Use the ViewModel
 
-        val apiService = WeatherService()
+        val apiService =
+            WeatherService(ConnectivityInterceptorImpl(this.requireContext()))
+        val weatherDataSource = WeatherDataSourceImpl(apiService)
+
+        weatherDataSource.downloadedCurrentWeather.observe(getViewLifecycleOwner(), Observer {
+            weather_text_view.text = it.toString()
+        })
 
         GlobalScope.launch(Dispatchers.Main) {
-            val currentWeatherResponse = apiService.getCurrentWeather("Shimla").await()//IO Thread
-            weather_text_view.text = currentWeatherResponse.current.toString()
+            weatherDataSource.fetchCurrentWeather("Shimla")
+            //val currentWeatherResponse = apiService.getCurrentWeather("Shimla").await()//IO Thread
+            // weather_text_view.text = currentWeatherResponse.current.toString()
         }
     }
 

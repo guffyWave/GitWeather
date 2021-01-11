@@ -1,4 +1,4 @@
-package com.thepeoplemesh.gitissues.data.weather
+package com.thepeoplemesh.gitissues.data.db.entity
 
 
 import com.google.gson.annotations.SerializedName
